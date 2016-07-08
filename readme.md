@@ -1,13 +1,13 @@
 # Rabbiter
 
 ## Connection
-```
+```javascript
 const manager = require('rabbiter/manager');
 manager.connect(<url>).then(conn=>{}).catch(err=>{});
 ```
 
 ## Consumer
-```
+```javascript
 const Consumer = require('rabbiter/consumer');
 class MyConsumer extends Consumer {
     constructor() {
@@ -22,7 +22,7 @@ class MyConsumer extends Consumer {
 ```
 
 ## Publisher
-```
+```javascript
 const publisher = require('rabbiter/publisher');
 publisher.publish('ex-name', { my: 'data' })
 ```
