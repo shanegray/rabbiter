@@ -11,12 +11,10 @@ class Consumer {
 			conn.createChannel().then(ch => {
 				return ch.consume(this.q, msg => {
 					var data = JSON.parse(msg.content);
-					try {
-						this.onMessage(data);
-						ch.ack(msg);
-					} catch(err) {
-						ch.nack(msg, false, false);
-					}
+					this.onMessage(data,
+						() => ch.ack(msg),
+						() => ch.nack(msg, false, false)
+					);
 				});
 			});
 		})
